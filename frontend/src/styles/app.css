@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+  }
+  
+  .container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .upload-box {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  
+  .chat-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .messages {
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .user {
+    background: #dbeafe;
+  }
+  
+  .ai {
+    background: #dcfce7;
+  }
+  
+  .input-section {
+    display: flex;
+    margin-top: 15px;
+    gap: 10px;
+  }
+  
+  .input-section input {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .input-section button {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
