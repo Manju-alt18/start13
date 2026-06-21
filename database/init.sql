@@ -1,17 +1,52 @@
-from .routes_chat import router as chat_router
-from .routes_docs import router as docs_router
+-- Create database
+CREATE DATABASE ai_agent;
 
-__all__ = [
-    "chat_router",
-    "docs_router"
-]
+-- Connect to database
+\c ai_agent;
 
-from app.api import chat_router, docs_router
+--------------------------------------------------
+-- USERS TABLE
+--------------------------------------------------
 
-from fastapi import FastAPI
-from app.api import chat_router, docs_router
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-app = FastAPI()
+--------------------------------------------------
+-- CHAT HISTORY TABLE
+--------------------------------------------------
 
-app.include_router(chat_router, prefix="/api")
-app.include_router(docs_router, prefix="/api")
+CREATE TABLE chat_history (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    query TEXT NOT NULL,
+    response TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--------------------------------------------------
+-- DOCUMENTS TABLE
+--------------------------------------------------
+
+CREATE TABLE documents (
+    id SERIAL PRIMARY KEY,
+    filename VARCHAR(255) NOT NULL,
+    filepath TEXT NOT NULL,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--------------------------------------------------
+-- INDEXES FOR PERFORMANCE
+--------------------------------------------------
+
+CREATE INDEX idx_users_email
+ON users(email);
+
+CREATE INDEX idx_chat_user_id
+ON chat_history(user_id);
+
+CREATE INDEX idx_documents_filename
+ON documents(filename);
