@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: ai_agent_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./data:/app/data
+      - ./vectorstore:/app/vectorstore
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - postgres
+      - chromadb
+
+  postgres:
+    image: postgres:16
+    container_name: ai_agent_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ai_agent
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: ai_agent_chromadb
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./vectorstore/chroma_db:/chroma/chroma
+
+  frontend:
+    build: ./frontend
+    container_name: ai_agent_frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

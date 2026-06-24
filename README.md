@@ -1,1 +1,1 @@
-this project is an genarative AI project using mistral(ollama), rag(retrival augmented generation) and python./
+this project is an genarative AI project using mistral(ollama), rag(retrival augmented generation) and python.
