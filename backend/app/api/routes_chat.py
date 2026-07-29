@@ -1,20 +1,21 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
-
 from app.core.rag_pipeline import generate_rag_response
 
 router = APIRouter()
 
 
 class ChatRequest(BaseModel):
-    query: str
+    question: str
 
 
 @router.post("/chat")
 async def chat(request: ChatRequest):
-    response = generate_rag_response(request.query)
+
+    answer = generate_rag_response(
+        request.question
+    )
 
     return {
-        "query": request.query,
-        "response": response
+        "answer": answer
     }

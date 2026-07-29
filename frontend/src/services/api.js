@@ -1,26 +1,19 @@
-const API_URL = "http://localhost:8000/api";
+const API_URL = "http://127.0.0.1:8000/api/chat";
 
-export async function sendMessage(query) {
-  const response = await fetch(`${API_URL}/chat`, {
+export const askQuestion = async (question) => {
+  const response = await fetch(API_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ query }),
+    body: JSON.stringify({
+      question: question,
+    }),
   });
 
-  return await response.json();
-}
-
-export async function uploadDocument(file) {
-  const formData = new FormData();
-
-  formData.append("file", file);
-
-  const response = await fetch(`${API_URL}/upload`, {
-    method: "POST",
-    body: formData,
-  });
+  if (!response.ok) {
+    throw new Error("Failed to get response");
+  }
 
   return await response.json();
-}
+};

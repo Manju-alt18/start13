@@ -1,16 +1,21 @@
-from app.core.retriever import retrieve_documents
 from app.core.llm import generate_answer
+from app.core.retriever import retrieve_documents
 
 
-def generate_rag_response(query: str):
+def generate_rag_response(question):
 
-    docs = retrieve_documents(query)
+    docs = retrieve_documents(question)
 
     context = "\n".join(docs)
 
-    answer = generate_answer(
-        context=context,
-        query=query
-    )
+    prompt = f"""
+    Context:
+    {context}
 
-    return answer
+    Question:
+    {question}
+
+    Answer using the context above.
+    """
+
+    return generate_answer(prompt)
