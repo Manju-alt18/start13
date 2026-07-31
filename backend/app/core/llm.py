@@ -1,17 +1,13 @@
 import requests
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-
-def generate_answer(prompt):
+def generate_answer(question):
     response = requests.post(
-        OLLAMA_URL,
+        "http://localhost:11434/api/generate",
         json={
             "model": "mistral",
-            "prompt": prompt,
+            "prompt": question,
             "stream": False
         }
     )
 
-    data = response.json()
-
-    return data.get("response", "No response generated.")
+    return response.json()["response"]

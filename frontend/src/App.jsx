@@ -50,6 +50,7 @@ function App() {
   }
 };
 
+
   return (
     <div style={styles.container}>
       <header style={styles.header}>
@@ -128,6 +129,26 @@ function App() {
       </div>
     </div>
   );
+
+  <div className="response-card">
+  <h2>{data.title}</h2>
+
+  <h3>Overview</h3>
+  <p>{data.overview}</p>
+
+  <h3>Key Points</h3>
+  <ul>
+    {data.key_points.map((item, index) => (
+      <li key={index}>{item}</li>
+    ))}
+  </ul>
+
+  <h3>Example</h3>
+  <p>{data.example}</p>
+
+  <h3>Conclusion</h3>
+  <p>{data.conclusion}</p>
+</div>
 }
 
 const styles = {

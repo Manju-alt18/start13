@@ -1,21 +1,33 @@
 from app.core.llm import generate_answer
-from app.core.retriever import retrieve_documents
-
 
 def generate_rag_response(question):
 
-    docs = retrieve_documents(question)
-
-    context = "\n".join(docs)
-
     prompt = f"""
-    Context:
-    {context}
+You are a professional AI assistant.
 
-    Question:
-    {question}
+Answer in this format only:
 
-    Answer using the context above.
-    """
+# Overview
+Brief explanation.
+
+# Key Points
+• Point 1
+• Point 2
+• Point 3
+
+# Detailed Explanation
+- Explanation 1
+- Explanation 2
+- Explanation 3
+
+# Example
+Provide an example if relevant.
+
+# Conclusion
+Short final conclusion.
+
+Question:
+{question}
+"""
 
     return generate_answer(prompt)
