@@ -1,17 +1,15 @@
-from .routes_chat import router as chat_router
-from .routes_docs import router as docs_router
+import os
 
-__all__ = [
-    "chat_router",
-    "docs_router"
-]
+def read_text_file(file_path):
+    with open(file_path, "r", encoding="utf-8") as file:
+        return file.read()
 
-from app.api import chat_router, docs_router
+def clean_text(text):
+    return " ".join(text.split())
 
-from fastapi import FastAPI
-from app.api import chat_router, docs_router
+def allowed_file(filename):
+    allowed_extensions = [".txt", ".pdf", ".docx"]
 
-app = FastAPI()
+    ext = os.path.splitext(filename)[1].lower()
 
-app.include_router(chat_router, prefix="/api")
-app.include_router(docs_router, prefix="/api")
+    return ext in allowed_extensions

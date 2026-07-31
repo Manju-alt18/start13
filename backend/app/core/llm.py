@@ -1,21 +1,17 @@
-from mistralai import Mistral
-import os
+import requests
 
-client = Mistral(
-    api_key=os.getenv("MISTRAL_API_KEY")
-)
-
+OLLAMA_URL = "http://localhost:11434/api/generate"
 
 def generate_answer(prompt):
-
-    response = client.chat.complete(
-        model="mistral-large-latest",
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
+    response = requests.post(
+        OLLAMA_URL,
+        json={
+            "model": "mistral",
+            "prompt": prompt,
+            "stream": False
+        }
     )
 
-    return response.choices[0].message.content
+    data = response.json()
+
+    return data.get("response", "No response generated.")
