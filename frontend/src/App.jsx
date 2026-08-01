@@ -90,8 +90,8 @@ function App() {
                   ...styles.message,
                   backgroundColor:
                     msg.role === "user"
-                      ? "#dbeafe"
-                      : "#f3f4f6",
+                      ? "#2b627f"
+                      : "#0c2453",
                   alignSelf:
                     msg.role === "user"
                       ? "flex-end"
