@@ -51,6 +51,8 @@ function App() {
 };
 
 
+
+
   return (
     <div style={styles.container}>
       <header style={styles.header}>
@@ -149,91 +151,146 @@ function App() {
   <h3>Conclusion</h3>
   <p>{data.conclusion}</p>
 </div>
-}
+};
+
+
+
 
 const styles = {
   container: {
     minHeight: "100vh",
-    background: "#f8fafc",
-    fontFamily: "Arial, sans-serif"
+    background:
+      "linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%)",
+    color: "#fff",
+    fontFamily: "'Segoe UI', sans-serif",
+    overflowY: "auto",
+    overflow: "hidden",
   },
 
   header: {
-    background: "#2563eb",
-    color: "white",
+    background: "rgba(255,255,255,0.05)",
+    backdropFilter: "blur(20px)",
+    borderBottom: "1px solid rgba(255,255,255,0.1)",
+    color: "#fff",
     padding: "20px",
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: "28px",
+    fontWeight: "bold",
+    letterSpacing: "1px",
   },
 
   content: {
     display: "flex",
+    height: "calc(100vh - 90px)",
     padding: "20px",
-    gap: "20px"
+    gap: "20px",
   },
 
   sidebar: {
     width: "300px",
-    background: "white",
+    background: "rgba(255,255,255,0.05)",
+    backdropFilter: "blur(20px)",
+    border: "1px solid rgba(255,255,255,0.1)",
+    borderRadius: "20px",
     padding: "20px",
-    borderRadius: "10px",
-    boxShadow: "0 2px 10px rgba(0,0,0,0.1)"
+    boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
   },
 
   chatSection: {
     flex: 1,
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
   },
 
   chatWindow: {
-    height: "70vh",
+    flex: 1,
     overflowY: "auto",
-    background: "white",
+    background: "rgba(255,255,255,0.04)",
+    backdropFilter: "blur(20px)",
+    border: "1px solid rgba(255,255,255,0.08)",
+    borderRadius: "20px",
     padding: "20px",
-    borderRadius: "10px",
     display: "flex",
     flexDirection: "column",
-    gap: "10px",
-    boxShadow: "0 2px 10px rgba(0,0,0,0.1)"
+    gap: "15px",
+    boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
   },
 
-  message: {
-    padding: "12px",
-    borderRadius: "10px",
-    maxWidth: "70%"
+  userMessage: {
+    alignSelf: "flex-end",
+    background:
+      "linear-gradient(135deg, #06b6d4, #2563eb)",
+    color: "#3e052e",
+    padding: "14px 18px",
+    borderRadius: "18px",
+    maxWidth: "70%",
+    boxShadow: "0 0 20px rgba(37,99,235,0.4)",
+  },
+
+  aiMessage: {
+    alignSelf: "flex-start",
+    background: "rgba(255,255,255,0.08)",
+    border: "1px solid rgba(255,255,255,0.08)",
+    color: "#490435",
+    padding: "14px 18px",
+    borderRadius: "18px",
+    maxWidth: "75%",
+    backdropFilter: "blur(20px)",
   },
 
   inputArea: {
     display: "flex",
-    gap: "10px",
-    marginTop: "15px"
-  },
+    alignItems: "center",
+    gap: "15px",
+
+    padding: "15px",
+
+    background: "rgba(255,255,255,0.05)",
+    backdropFilter: "blur(20px)",
+
+    border: "1px solid rgba(255,255,255,0.1)",
+    borderRadius: "20px",
+
+    boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+
+    marginTop: "20px",
+},
 
   input: {
     flex: 1,
-    padding: "12px",
-    borderRadius: "8px",
-    border: "1px solid #ccc"
+    padding: "14px",
+    background: "rgba(255,255,255,0.08)",
+    border: "1px solid rgba(255,255,255,0.1)",
+    color: "#fff",
+    borderRadius: "14px",
+    outline: "none",
+    fontSize: "15px",
   },
 
   sendButton: {
-    background: "#2563eb",
-    color: "white",
+    background:
+      "linear-gradient(135deg,#06b6d4,#8b5cf6)",
+    color: "#fff",
     border: "none",
-    padding: "12px 20px",
-    borderRadius: "8px",
-    cursor: "pointer"
+    padding: "14px 24px",
+    borderRadius: "14px",
+    cursor: "pointer",
+    fontWeight: "bold",
+    boxShadow: "0 0 20px rgba(139,92,246,0.4)",
   },
 
   uploadButton: {
-    marginTop: "10px",
-    background: "#16a34a",
-    color: "white",
+    marginTop: "15px",
+    background:
+      "linear-gradient(135deg,#10b981,#059669)",
+    color: "#fff",
     border: "none",
-    padding: "10px 16px",
-    borderRadius: "8px",
-    cursor: "pointer"
-  }
+    padding: "12px 18px",
+    borderRadius: "12px",
+    cursor: "pointer",
+    fontWeight: "bold",
+    boxShadow: "0 0 20px rgba(16,185,129,0.4)",
+  },
 };
 
 export default App;
