@@ -126,6 +126,8 @@ function App() {
             >
               Send
             </button>
+
+            
           </div>
         </div>
       </div>
@@ -158,13 +160,17 @@ function App() {
 
 const styles = {
   container: {
-    minHeight: "100vh",
+    minHeight: "80vh",
     background:
       "linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%)",
     color: "#fff",
     fontFamily: "'Segoe UI', sans-serif",
     overflowY: "auto",
-    overflow: "hidden",
+    overflowX: "hidden",
+    padding: "20px",
+
+    display: "flex",
+    flexDirection: "column",
   },
 
   header: {
@@ -184,7 +190,7 @@ const styles = {
     height: "calc(100vh - 90px)",
     padding: "20px",
     gap: "20px",
-  },
+},
 
   sidebar: {
     width: "300px",
