@@ -125,9 +125,7 @@ function App() {
               style={styles.sendButton}
             >
               Send
-            </button>
-
-            
+            </button> 
           </div>
         </div>
       </div>
