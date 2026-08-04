@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { askQuestion } from "./services/api";
+import "./styles/app.css";
 
 function App() {
   const [messages, setMessages] = useState([
@@ -121,11 +122,14 @@ function App() {
             />
 
             <button
-              onClick={handleSend}
-              style={styles.sendButton}
-            >
-              Send
-            </button> 
+  onClick={handleSend}
+  style={styles.sendButton}
+>
+  Send
+</button>
+
+            
+
           </div>
         </div>
       </div>
@@ -176,9 +180,9 @@ const styles = {
     backdropFilter: "blur(20px)",
     borderBottom: "1px solid rgba(255,255,255,0.1)",
     color: "#fff",
-    padding: "20px",
+    padding: " 10px 20px",
     textAlign: "center",
-    fontSize: "28px",
+    fontSize: "20px",
     fontWeight: "bold",
     letterSpacing: "1px",
   },

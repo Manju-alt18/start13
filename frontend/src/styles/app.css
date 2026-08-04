@@ -27,29 +27,34 @@ body {
 body::before{
     content:'';
     position:fixed;
-    width:500px;
-    height:500px;
     top:-150px;
     left:-150px;
+    width:500px;
+    height:500px;
     background:#06b6d4;
     filter:blur(180px);
     opacity:.15;
     animation:float1 10s infinite ease-in-out;
+
+    z-index:-1;
+    pointer-events:none;
 }
 
 body::after{
     content:'';
     position:fixed;
-    width:500px;
-    height:500px;
     bottom:-150px;
     right:-150px;
+    width:500px;
+    height:500px;
     background:#8b5cf6;
     filter:blur(180px);
     opacity:.15;
     animation:float2 10s infinite ease-in-out;
-}
 
+    z-index:-1;
+    pointer-events:none;
+}
 @keyframes float1{
     0%,100%{
         transform:translate(0,0);
